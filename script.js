@@ -27,12 +27,12 @@ import * as THREE from 'three';
 			container.appendChild( renderer.domElement );
 
 			const scene = new THREE.Scene();
-			scene.background = new THREE.Color( 0x222222 );
-			scene.fog = new THREE.Fog( 0x444444, 15, 25 );
+			scene.background = new THREE.Color( 0x47a9ff );
+			scene.fog = new THREE.Fog( 0x366c9c, 6, 25 );
 
 
 			const camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, .1, 50);
-			camera.position.set(-9, 1, -2);
+			camera.position.set(-6, .9, -3);
 			
 
 			const controls = new OrbitControls( camera, renderer.domElement );
@@ -40,7 +40,7 @@ import * as THREE from 'three';
 			controls.update();
 			controls.enablePan = false;
 			controls.enableDamping = true;
-			controls.minDistance = 4;
+			controls.minDistance = 6;
 			controls.maxDistance = 30;
 
 			const dracoLoader = new DRACOLoader();
@@ -49,14 +49,13 @@ import * as THREE from 'three';
 			const loader = new GLTFLoader();
 			loader.setDRACOLoader( dracoLoader );
 
-
 			var loadingDiv = document.getElementById("loadingDiv");
 
-			loader.load( 'models/cabin.glb', function ( gltf ) {
+			loader.load( 'models/mountaintop_castle.glb', function ( gltf ) {
 
 				const model = gltf.scene;
-				model.position.set( 0, -1, 0 );
-				model.scale.set( 0.16, 0.16, 0.16);
+				model.position.set( 0, 0, 0 );
+				model.scale.set( 0.5, 0.5, 0.5);
 				scene.add( model );
 
 				model.traverse( function ( object ) {
@@ -95,7 +94,7 @@ import * as THREE from 'three';
 
 			const dirLight = new THREE.DirectionalLight( 0xffddde , 12);
 			
-				dirLight.position.set( -4, 8, 10);
+				dirLight.position.set( -4, 3, 10);
 				dirLight.castShadow = true;
 				// dirLight.shadow.camera.near = 0.1;
 				// dirLight.shadow.camera.far = 40;
@@ -103,8 +102,7 @@ import * as THREE from 'three';
 				dirLight.shadow.mapSize.height = 1024;
 				scene.add( dirLight );
 
-			
-			scene.add( new THREE.HemisphereLight( 0xffddde, 0x785099, .3 ));
+			scene.add( new THREE.HemisphereLight( 0xffddde, 0xceecf5, .3 ));
 
 
 			window.onresize = function () {

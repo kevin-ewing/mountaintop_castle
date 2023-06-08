@@ -1,3 +1,3 @@
-# Whimsical Cabin
+# Mountaintop Castle
 
-Three.js rendering of a cabin
+Three.js rendering of a mountaintop castle
